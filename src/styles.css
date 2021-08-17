@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+*
+{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --foreground-default: hsl(235, 19%, 35%);
+  --foreground-primary:hsl(236, 9%, 61%);
+  --foreground-secondary: hsl(233, 11%, 84%);
+  --foreground-tertiary:hsl(236, 33%, 92%);
+
+  --background-default: hsl(0, 0%, 98%);
+  --background-primary: linear-gradient(hsl(280, 87%, 65%),hsl(192, 100%, 67%));
+
+  --primary-default: hsl(220, 98%, 61%);
+
+  /* Shadows */
+  --background-tertiary-shadow: 0 1px 3px 0 rgba(233, 234, 239, 0.5);
+
+  /* Images */
+  --background-image-desktop: url("/assets/images/bg-desktop-light.jpg");
+  --background-image-mobile: url("/assets/images/bg-mobile-light.jpg");
+}
+
+
+html,body
+{
+  height:100%;
+  width:100%;
+}
+
+html
+{
+  font-size: 18px;
+  font-family: 'Josefin Sans';
+  background: var(--background-default);
+}
+
+.toggle-img-sun
+{
+  display: none;
+}
+

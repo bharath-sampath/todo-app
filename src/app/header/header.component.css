@@ -1,0 +1,20 @@
+.bg-header
+{
+  height:40%;
+  width: auto;
+  background:var(--background-image-desktop);
+  background-position:center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--background-primary);
+}
+@media (max-width:800px)
+{
+  .bg-header
+  {
+    background: var(--background-image-mobile);
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

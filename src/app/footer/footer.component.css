@@ -1,0 +1,11 @@
+footer
+{
+  display: flex;
+  justify-content: center;
+}
+.ftr-txt
+{
+  color:var(--foreground-primary);
+  font-size: small;
+  padding-top:3rem;
+}
