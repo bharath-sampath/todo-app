@@ -1,8 +1,9 @@
 section
 {
+
   width: 42%;
   min-width: 340px;
-  max-width: 31rem;
+
 }
 
 .theme-select
@@ -23,7 +24,6 @@ section
   background: var(--toggle-image);
   background-position: center;
   background-repeat: no-repeat;
-
 }
 
 .new-note
@@ -39,7 +39,7 @@ section
 {
   font-weight: 700;
   font-size: xx-large;
-  color:hsl(0, 0%, 100%);
+  color:hsl(0, 0%, 98%);
   letter-spacing:1.5rem;
 }
 
@@ -50,7 +50,7 @@ section
   align-items: center;
   top:-10rem;
   width:100%;
-  background: var(--background-default);
+  background: var(--foreground-secondary);
   height: 3.5rem;
   margin-bottom: 1.5rem;
   border-radius: 3px;
@@ -65,14 +65,15 @@ section
 #new-note-inp
 {
   position: relative;
-  width:28rem;
+  width:120%;
   height: 3.5rem;
   outline:0;
   border:0;
-  background-color: var(--background-default);
+  background-color: var(--foreground-secondary);
   vertical-align: middle;
   font-family: "Josefin Sans";
   font-size: medium;
+  color:var(--foreground-default);
 }
 .note-items-list
 {
@@ -81,7 +82,7 @@ section
   top: -10rem;
   display: flex;
   justify-content:center;
-  background:var(--background-default);
+  background:var(--foreground-secondary);
   border-radius:3px;
   box-shadow: var(--background-tertiary-shadow);
 }
@@ -90,7 +91,7 @@ table
   border-collapse: collapse;
 }
 table tr {
-  border-bottom:1px solid var(--foreground-secondary);
+  border-bottom:.5px solid var(--foreground-tertiary);
 }
 tbody
 {
@@ -119,10 +120,31 @@ tr
 }
 .note-del
 {
+
   width:3rem;
   text-align: center;
+  vertical-align: middle;
+ 
 }
 
+.note-del>img, .note-del>button
+{
+  display: none;
+}
+
+tr:hover >.note-del >img
+{
+  position:relative;
+  display:block;
+  
+}
+tr:hover > .note-del > button
+{
+  position:relative;
+  display:block;
+  right:-1rem;
+ 
+}
 .note-del-btn
 {
   position:relative;
@@ -140,5 +162,7 @@ tr
 {
   letter-spacing:1rem;
 }
+
+
 
 }

@@ -3,7 +3,7 @@
     <div class="todo-lbl">TODO</div>
     <div class="toggle-img"></div>
    </div>
-  <input class="theme-select" type="checkbox">
+  <input class="theme-select" type="checkbox" (change)="onToggleTheme()">
   <form [formGroup]="noteForm" (ngSubmit)="addNote()" class="new-note-chk">
     <input type="checkbox" formControlName="selectAll">
     <input type=text id="new-note-inp" placeholder='Create new todo..' formControlName="newNoteText">

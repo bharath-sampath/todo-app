@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
+import { ThemeService} from '../theme.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,9 +16,10 @@ export class TodoListComponent implements OnInit {
     newNoteText: new FormControl('',Validators.required),
   });
 
-  constructor() { }
+  constructor(private themeService:ThemeService) { }
 
   ngOnInit(): void {
+    this.themeService.setLightTheme();
   }
 
   addNote()
@@ -37,6 +39,13 @@ export class TodoListComponent implements OnInit {
     {
           this.notes.splice(index,1);
         }
+
+  }
+
+  onToggleTheme()
+  {
+    if (this.themeService.getActiveTheme().name === 'dark') this.themeService.setLightTheme();
+    else this.themeService.setDarkTheme();
 
   }
 }

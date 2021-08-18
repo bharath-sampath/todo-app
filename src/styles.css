@@ -11,10 +11,10 @@
   /* Colors */
   --foreground-default: hsl(235, 19%, 35%);
   --foreground-primary:hsl(236, 9%, 61%);
-  --foreground-secondary: hsl(233, 11%, 84%);
+  --foreground-secondary: hsl(0, 0%, 98%);
   --foreground-tertiary:hsl(236, 33%, 92%);
 
-  --background-default: hsl(0, 0%, 98%);
+  --background-default: hsl(236, 33%, 92%);
   --background-primary: linear-gradient(hsl(280, 87%, 65%),hsl(192, 100%, 67%));
 
   --primary-default: hsl(220, 98%, 61%);
@@ -26,6 +26,9 @@
   --background-image-desktop: url("/assets/images/bg-desktop-light.jpg");
   --background-image-mobile: url("/assets/images/bg-mobile-light.jpg");
   --toggle-image:url("/assets/images/icon-moon.svg");
+
+  
+
 }
 
 
