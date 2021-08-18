@@ -10,7 +10,7 @@ section
 {
   position:relative;
   bottom: 14.3rem;
-  left: 29.5rem;
+  left: 30rem;
   width:1.5rem;
   height:1.5rem;
   opacity: 0.01;
@@ -136,13 +136,18 @@ tr:hover >.note-del >img
 {
   position:relative;
   display:block;
-  
+  top:.5rem;
 }
 tr:hover > .note-del > button
 {
   position:relative;
   display:block;
-  right:-1rem;
+  right:.4rem;
+  top:-.5rem;
+  width:1rem;
+  height:1rem;
+  opacity: 0.01;
+  cursor:pointer;
  
 }
 .note-del-btn
@@ -163,6 +168,11 @@ tr:hover > .note-del > button
   letter-spacing:1rem;
 }
 
+.note-del>img, .note-del>button
+{
+  display: block;
+  top:-1rem;
+}
 
 
 }
