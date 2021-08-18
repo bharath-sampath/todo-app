@@ -5,6 +5,8 @@ footer
 }
 .ftr-txt
 {
+  position:relative;
+  top:-5rem;
   color:var(--foreground-primary);
   font-size: small;
   padding-top:3rem;

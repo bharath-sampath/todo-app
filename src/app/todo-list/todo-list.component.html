@@ -1,15 +1,25 @@
-<form>
+<section>
   <div class="new-note">
     <div class="todo-lbl">TODO</div>
-    <div class="toggle-img-moon"><img src="/assets/images/icon-moon.svg"alt="toggle dark theme"></div>
-    <div class="toggle-img-sun"><img src="/assets/images/icon-sun.svg"alt="toggle light theme"></div>
-  </div>
-  <div>
-    <input type=text id="new-note-inp" placeholder='Create new todo..'>
-  </div>
-  <div class="note-item">
-    <input type="checkbox" id="select-note">
-    <div class="note-info">Test note</div>
-    <img src="/assets/images/icon-cross.svg">
-  </div>
-</form>
+    <div class="toggle-img"></div>
+   </div>
+  <input class="theme-select" type="checkbox">
+  <form [formGroup]="noteForm" (ngSubmit)="addNote()" class="new-note-chk">
+    <input type="checkbox" formControlName="selectAll">
+    <input type=text id="new-note-inp" placeholder='Create new todo..' formControlName="newNoteText">
+  </form>
+  <table class="note-items-list">
+    <tbody>
+
+      <tr *ngFor="let note of notes">
+        <td class="note-action"><input type="checkbox"></td>
+        <td class="note">{{note}}</td>
+        <td class="note-del">
+          <img src="/assets/images/icon-cross.svg">
+          <button class=note-del-btn (click)="onDelete($event)"></button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</section>
