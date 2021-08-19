@@ -10,7 +10,6 @@
   </form>
   <table class="note-items-list">
     <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
-
       <tr *ngFor="let note of notes" cdkDrag cdkDragLockAxis="y">
         <td class="note-action"><input type="checkbox"></td>
         <td class="note">{{note}}</td>
@@ -19,7 +18,6 @@
           <button class=note-del-btn (click)="onDelete(note)"></button>
         </td>
       </tr>
-
     </tbody>
   </table>
 </section>
