@@ -25,7 +25,7 @@ export class TodoListComponent implements OnInit {
 
   addNote()
   {
-    let newNoteValue:any=this.noteForm.get("newNoteText").value;
+    let newNoteValue:any=this.noteForm.get("newNoteText")?.value;
     if (newNoteValue !== "" && newNoteValue !== null)
     {
       this.notes.push(newNoteValue);
@@ -33,9 +33,9 @@ export class TodoListComponent implements OnInit {
     }
 
   }
-  onDelete($Event:Event)
+  onDelete(note:string)
   {
-    let index:number = this.notes.indexOf($Event.path[2].children[1].textContent);
+    let index:number = this.notes.indexOf(note);
     if (index!=-1)
     {
           this.notes.splice(index,1);
