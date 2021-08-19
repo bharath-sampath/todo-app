@@ -9,9 +9,9 @@
     <input type=text id="new-note-inp" placeholder='Create new todo..' formControlName="newNoteText">
   </form>
   <table class="note-items-list">
-    <tbody>
+    <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
 
-      <tr *ngFor="let note of notes">
+      <tr *ngFor="let note of notes" cdkDrag cdkDragLockAxis="y">
         <td class="note-action"><input type="checkbox"></td>
         <td class="note">{{note}}</td>
         <td class="note-del">

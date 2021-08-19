@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { ThemeService} from '../theme.service';
+import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-todo-list',
@@ -39,13 +40,14 @@ export class TodoListComponent implements OnInit {
     {
           this.notes.splice(index,1);
         }
-
   }
-
   onToggleTheme()
   {
     if (this.themeService.getActiveTheme().name === 'dark') this.themeService.setLightTheme();
     else this.themeService.setDarkTheme();
 
+  }
+  onDrop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
   }
 }

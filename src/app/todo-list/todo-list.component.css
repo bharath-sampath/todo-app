@@ -124,7 +124,7 @@ tr
   width:3rem;
   text-align: center;
   vertical-align: middle;
- 
+
 }
 
 .note-del>img, .note-del>button
@@ -148,7 +148,7 @@ tr:hover > .note-del > button
   height:1rem;
   opacity: 0.01;
   cursor:pointer;
- 
+
 }
 .note-del-btn
 {
@@ -172,7 +172,9 @@ tr:hover > .note-del > button
 {
   display: block;
   top:-1rem;
+
 }
+
 
 
 }
