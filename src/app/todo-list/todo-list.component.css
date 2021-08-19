@@ -131,6 +131,10 @@ tr
 {
   display: none;
 }
+tr:hover
+{
+  cursor:grab;
+}
 
 tr:hover >.note-del >img
 {
@@ -150,6 +154,7 @@ tr:hover > .note-del > button
   cursor:pointer;
 
 }
+
 .note-del-btn
 {
   position:relative;
@@ -161,12 +166,28 @@ tr:hover > .note-del > button
   cursor:pointer;
 }
 
+.cdk-drag-preview {
+  display:flex;
+  align-items: center;
+  background:var(--foreground-secondary);
+  border-radius:3px;
+  box-shadow: var(--background-tertiary-shadow);
+
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  cursor:grabbing;
+}
+
 @media(max-width:800px)
 {
   .todo-lbl
 {
   letter-spacing:1rem;
 }
+
+
 
 .note-del>img, .note-del>button
 {
