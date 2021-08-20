@@ -8,22 +8,23 @@ section
 
 .theme-select
 {
-  position:relative;
-  bottom: 14.3rem;
   left: 30rem;
   width:1.5rem;
   height:1.5rem;
-  opacity: 0.01;
+  background: var(--toggle-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  border:0;
+  outline:0;
   cursor: pointer;
 }
 
 .toggle-img
 {
+  position:relative;
   height: 1.5rem;
   width: 1.5rem;
-  background: var(--toggle-image);
-  background-position: center;
-  background-repeat: no-repeat;
+
 }
 
 .new-note
@@ -106,6 +107,11 @@ tr
   border:2px gray;
 }
 
+tr:hover>.note-del>button
+{
+  display:block;
+  margin:auto;
+}
 .note-action
 {
   width:3rem;
@@ -120,50 +126,28 @@ tr
 }
 .note-del
 {
-
   width:3.8rem;
-  text-align: center;
-  vertical-align: middle;
-
 }
 
-.note-del>img, .note-del>button
+.note-del>button
 {
   display: none;
 }
-tr:hover
-{
-  cursor:grab;
-}
 
-tr:hover >.note-del >img
+
+
+
+td>button
 {
-  position:relative;
-  display:block;
-  top:.5rem;
-}
-tr:hover > .note-del > button
-{
-  position:relative;
-  display:block;
-  right:.4rem;
-  top:-.5rem;
-  width:1rem;
-  height:1rem;
-  opacity: 0.01;
+  background: url("/assets/images/icon-cross.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   cursor:pointer;
-
-}
-
-.note-del-btn
-{
-  position:relative;
-  right:1rem;
-  top:-.1rem;
-  width:1rem;
-  height:1rem;
-  opacity: 0.01;
-  cursor:pointer;
+  height:1.0rem;
+  width:1.0rem;
+border:0;
+outline:0;
 }
 
 .cdk-drag-preview {
@@ -192,8 +176,7 @@ tr:hover > .note-del > button
 .note-del>img, .note-del>button
 {
   display: block;
-  top:-1rem;
-
+  margin:auto;
 }
 
 

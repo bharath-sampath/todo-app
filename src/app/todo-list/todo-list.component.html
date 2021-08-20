@@ -1,9 +1,8 @@
 <section>
   <div class="new-note">
     <div class="todo-lbl">TODO</div>
-    <div class="toggle-img"></div>
+    <button class="theme-select" name="themer_chk" (click)="onToggleTheme()"></button>
    </div>
-  <input class="theme-select" type="checkbox" (change)="onToggleTheme()">
   <form [formGroup]="noteForm" (ngSubmit)="addNote()" class="new-note-chk">
     <input type="checkbox" formControlName="selectAll">
     <input type=text id="new-note-inp" placeholder='Create new todo..' formControlName="newNoteText">
@@ -14,8 +13,7 @@
         <td class="note-action"><input type="checkbox"></td>
         <td class="note">{{note}}</td>
         <td class="note-del">
-          <img src="/assets/images/icon-cross.svg">
-          <button class=note-del-btn (click)="onDelete(note)"></button>
+           <button class=note-del-btn (click)="onDelete(note)"></button>
         </td>
       </tr>
     </tbody>
