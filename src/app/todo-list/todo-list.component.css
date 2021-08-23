@@ -87,6 +87,7 @@ section
   position: relative;
   top: -10rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content:center;
   background:var(--foreground-secondary);
   border-radius:3px;
@@ -117,6 +118,35 @@ tr:hover>.note-del>button
   display:block;
   margin:auto;
 }
+
+tfoot>tr
+{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap:10em;
+  font-size: .5em;
+  height:2.5rem;  
+}
+
+tfoot>tr>td>a
+{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+tfoot>tr~tr
+{
+  display: none;
+}
+
+.table-filters
+{
+  display: flex;
+  justify-content:center;
+  text-decoration-style: none;
+  gap:1rem;
+}
 .note-action
 {
   width:3rem;
@@ -139,7 +169,10 @@ tr:hover>.note-del>button
   display: none;
 }
 
-
+.active-filter
+{
+  color:hsl(220, 98%, 61%);
+}
 
 
 td>button
@@ -169,14 +202,12 @@ outline:0;
   cursor:grabbing;
 }
 
-@media(max-width:800px)
+@media(max-width:850px)
 {
   .todo-lbl
 {
   letter-spacing:1rem;
 }
-
-
 
 .note-del>img, .note-del>button
 {
@@ -184,6 +215,22 @@ outline:0;
   margin:auto;
 }
 
+tfoot>tr>.table-filters
+{
+  display: none;
+  width:100%;
+}
+tfoot>tr~tr
+{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+tfoot>tr>.table-filters-mobile
+{
+  display: flex;
+  gap:0.5rem;
+}
 
 
 }

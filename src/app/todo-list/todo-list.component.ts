@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { ThemeService} from '../theme.service';
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
+import { not } from '@angular/compiler/src/output/output_ast';
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 
 export class noteObject{
   note:string="";
@@ -17,8 +19,11 @@ export class noteObject{
 export class TodoListComponent implements OnInit {
 
   notes:noteObject[]=[];
+  filtNotes:noteObject[]=[];
+  allFilter:boolean=true;
+  compFilter:boolean=false;
+  activeFilter:boolean=false;
 
-  ngModelChecked = false;
   noteForm = new FormGroup({
     selectAll: new FormControl(''),
     newNoteText: new FormControl('',Validators.required),
@@ -28,6 +33,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.themeService.setLightTheme();
+    this.filteredNotes();
   }
 
   addNote()
@@ -41,11 +47,18 @@ export class TodoListComponent implements OnInit {
       this.notes.push(newNote);
       this.noteForm.reset();
     }
-
+    this.filteredNotes();
   }
-  onDelete(i:number)
+  filteredNotes()
   {
-    this.notes.splice(i,1);
+    if (this.activeFilter) this.filtNotes=this.notes.filter(this.activeNotes);
+    if (this.allFilter) this.filtNotes=this.notes.filter(this.allNotes);
+    if (this.compFilter) this.filtNotes=this.notes.filter(this.compNotes);
+  }
+  onDelete(note:noteObject)
+  {
+    this.notes.splice(this.notes.indexOf(note),1);
+    this.filteredNotes();
   }
   onToggleTheme()
   {
@@ -53,12 +66,60 @@ export class TodoListComponent implements OnInit {
     else this.themeService.setDarkTheme();
 
   }
-  onComplete(event:Event,i:number)
-  {
-    console.log((event.target as HTMLInputElement).checked);
-     this.notes[i].noteComplete=(event.target as HTMLInputElement).checked;
+  onComplete(note:noteObject,event:Event)
+  {  
+     this.notes[this.notes.indexOf(note)].noteComplete=(event.target as HTMLInputElement).checked;
+     this.filteredNotes();
   }
   onDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
+  }
+  activeNotes(note:noteObject)
+  {
+    return !note.noteComplete;
+  }
+  allNotes(note:noteObject)
+  {
+    return true;
+  }
+  compNotes(note:noteObject)
+  {
+    return note.noteComplete;
+  }
+  calculateCount()
+  {
+    return this.notes.filter(this.activeNotes).length;
+  }
+  onClear()
+  {
+    while ( this.notes.findIndex(e => e.noteComplete === true ) >= 0 )
+      this.notes.splice( this.notes.findIndex(f => f.noteComplete===true),1);
+    
+    
+    this.filteredNotes();
+  }
+  onFilterClick(filter:string)
+  {
+    switch (filter) 
+    {
+      case 'All':
+            this.allFilter=true;
+            this.activeFilter=false;
+            this.compFilter=false;    
+            this.filteredNotes();        
+            break;
+      case 'Act':
+          this.allFilter=false;
+          this.activeFilter=true;
+          this.compFilter=false; 
+          this.filteredNotes();         
+          break;
+      case 'Comp':
+          this.allFilter=false;
+          this.activeFilter=false;
+          this.compFilter=true;
+          this.filteredNotes();          
+          break;
+    }
   }
 }

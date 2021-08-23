@@ -9,13 +9,33 @@
   </form>
   <table class="note-items-list">
     <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
-      <tr *ngFor="let note of notes; index as i" cdkDrag cdkDragLockAxis="y">
-        <td class="note-action"><input type="checkbox" (change)="onComplete($event,i)"></td>
+      <tr *ngFor="let note of filtNotes; index as i" cdkDrag cdkDragLockAxis="y" ngClass>
+        <td class="note-action"><input type="checkbox" (change)="onComplete(note,$event)" [checked]="note.noteComplete"></td>
         <td class="note" [ngClass]="{'complete-note':note.noteComplete}">{{note.note}}</td>
         <td class="note-del">
-           <button class=note-del-btn (click)="onDelete(i)"></button>
+           <button class=note-del-btn (click)="onDelete(note)"></button>
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <td>{{calculateCount()}} items left</td>
+        <td class="table-filters">
+          <a (click)= "onFilterClick('All')" [ngClass]="{'active-filter':allFilter}">All</a>
+          <a (click)= "onFilterClick('Act')"[ngClass]="{'active-filter':activeFilter}">Active</a>
+          <a (click)= "onFilterClick('Comp')"[ngClass]="{'active-filter':compFilter}">Completed</a>
+        </td>
+        <td>
+          <a (click)="onClear()">Clear Completed</a>
+        </td>
+      </tr>
+      <tr class=filters-mobile>
+        <td class="table-filters-mobile">
+          <a (click)= "onFilterClick('All')" [ngClass]="{'active-filter':allFilter}">All</a>
+          <a (click)= "onFilterClick('Act')"[ngClass]="{'active-filter':activeFilter}">Active</a>
+          <a (click)= "onFilterClick('Comp')"[ngClass]="{'active-filter':compFilter}">Completed</a>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </section>
