@@ -124,16 +124,15 @@ tfoot>tr
   display: flex;
   width: 100%;
   align-items: center;
-  gap:10em;
-  font-size: .5em;
+  gap:6em;
+  font-size: .75rem;
   height:2.5rem;  
-}
-
-tfoot>tr>td>a
-{
   text-decoration: none;
   cursor: pointer;
+  color:hsl(236, 9%, 61%);
 }
+
+
 
 tfoot>tr~tr
 {
@@ -146,6 +145,10 @@ tfoot>tr~tr
   justify-content:center;
   text-decoration-style: none;
   gap:1rem;
+}
+.table-oth
+{
+  margin:1rem;
 }
 .note-action
 {
@@ -215,6 +218,13 @@ outline:0;
   margin:auto;
 }
 
+tfoot
+{
+  position: relative;
+  width:100% ;
+}
+
+
 tfoot>tr>.table-filters
 {
   display: none;
@@ -222,6 +232,11 @@ tfoot>tr>.table-filters
 }
 tfoot>tr~tr
 {
+  position: absolute;
+  bottom:-3.5rem;
+  background:var(--foreground-secondary);
+  border-radius:3px;
+  box-shadow: var(--background-tertiary-shadow);
   display: flex;
   justify-content: center;
   width: 100%;
@@ -231,6 +246,9 @@ tfoot>tr>.table-filters-mobile
   display: flex;
   gap:0.5rem;
 }
-
+tfoot>tr
+{
+  justify-content: space-between;
+}
 
 }

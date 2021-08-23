@@ -2,8 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { ThemeService} from '../theme.service';
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
-import { not } from '@angular/compiler/src/output/output_ast';
-import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 
 export class noteObject{
   note:string="";
@@ -73,6 +71,7 @@ export class TodoListComponent implements OnInit {
   }
   onDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
+    this.filteredNotes();
   }
   activeNotes(note:noteObject)
   {
@@ -97,6 +96,11 @@ export class TodoListComponent implements OnInit {
     
     
     this.filteredNotes();
+  }
+  onSelectAll(event:Event)
+  {
+    this.notes.forEach(e => e.noteComplete=(event.target as HTMLInputElement).checked);
+    this.filteredNotes;
   }
   onFilterClick(filter:string)
   {

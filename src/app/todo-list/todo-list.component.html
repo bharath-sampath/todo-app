@@ -4,7 +4,7 @@
     <button class="theme-select" name="themer_chk" (click)="onToggleTheme()"></button>
    </div>
   <form [formGroup]="noteForm" (ngSubmit)="addNote()" class="new-note-chk">
-    <input type="checkbox" formControlName="selectAll">
+    <input type="checkbox" formControlName="selectAll" (change)="onSelectAll($event)">
     <input type=text id="new-note-inp" placeholder='Create new todo..' formControlName="newNoteText">
   </form>
   <table class="note-items-list">
@@ -19,14 +19,14 @@
     </tbody>
     <tfoot>
       <tr>
-        <td>{{calculateCount()}} items left</td>
+        <td class="table-oth">{{calculateCount()}} items left</td>
         <td class="table-filters">
           <a (click)= "onFilterClick('All')" [ngClass]="{'active-filter':allFilter}">All</a>
           <a (click)= "onFilterClick('Act')"[ngClass]="{'active-filter':activeFilter}">Active</a>
           <a (click)= "onFilterClick('Comp')"[ngClass]="{'active-filter':compFilter}">Completed</a>
         </td>
         <td>
-          <a (click)="onClear()">Clear Completed</a>
+          <a (click)="onClear()" class="table-oth">Clear Completed</a>
         </td>
       </tr>
       <tr class=filters-mobile>
