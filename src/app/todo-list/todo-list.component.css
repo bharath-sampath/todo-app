@@ -97,15 +97,26 @@ table
 {
   border-collapse: collapse;
 }
-table tr {
-  border-bottom:.5px solid var(--foreground-tertiary);
-}
 tbody
 {
   width: 100%;
   justify-content: center;
   align-items: center;
 }
+tbody>tr {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom:.5px solid var(--foreground-tertiary);
+}
+
+tbody>tr>td
+{
+  position:relative;
+}
+
+
+
 tr
 {
   width: 100%;
@@ -133,7 +144,6 @@ tfoot>tr
 }
 
 
-
 tfoot>tr~tr
 {
   display: none;
@@ -152,10 +162,16 @@ tfoot>tr~tr
 }
 .note-action
 {
+  
   width:3rem;
   text-align: center;
   vertical-align: middle;
 }
+
+
+
+
+
 .note
 {
   width:25rem;
