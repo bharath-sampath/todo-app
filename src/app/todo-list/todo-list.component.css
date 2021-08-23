@@ -115,8 +115,6 @@ tbody>tr>td
   position:relative;
 }
 
-
-
 tr
 {
   width: 100%;
@@ -167,11 +165,6 @@ tfoot>tr~tr
   text-align: center;
   vertical-align: middle;
 }
-
-
-
-
-
 .note
 {
   width:25rem;
