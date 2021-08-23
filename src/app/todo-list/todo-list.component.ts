@@ -3,15 +3,22 @@ import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/
 import { ThemeService} from '../theme.service';
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 
+export class noteObject{
+  note:string="";
+  noteComplete:boolean=false;
+}
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
+
 export class TodoListComponent implements OnInit {
 
-  notes:string[]=[];
+  notes:noteObject[]=[];
 
+  ngModelChecked = false;
   noteForm = new FormGroup({
     selectAll: new FormControl(''),
     newNoteText: new FormControl('',Validators.required),
@@ -28,24 +35,28 @@ export class TodoListComponent implements OnInit {
     let newNoteValue:any=this.noteForm.get("newNoteText")?.value;
     if (newNoteValue !== "" && newNoteValue !== null)
     {
-      this.notes.push(newNoteValue);
+      let newNote= new noteObject;
+      newNote.note=newNoteValue;
+      newNote.noteComplete=false;
+      this.notes.push(newNote);
       this.noteForm.reset();
     }
 
   }
-  onDelete(note:string)
+  onDelete(i:number)
   {
-    let index:number = this.notes.indexOf(note);
-    if (index!=-1)
-    {
-          this.notes.splice(index,1);
-        }
+    this.notes.splice(i,1);
   }
   onToggleTheme()
   {
     if (this.themeService.getActiveTheme().name === 'dark') this.themeService.setLightTheme();
     else this.themeService.setDarkTheme();
 
+  }
+  onComplete(event:Event,i:number)
+  {
+    console.log((event.target as HTMLInputElement).checked);
+     this.notes[i].noteComplete=(event.target as HTMLInputElement).checked;
   }
   onDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.notes, event.previousIndex, event.currentIndex);

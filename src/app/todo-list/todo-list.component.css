@@ -27,6 +27,11 @@ section
 
 }
 
+.complete-note
+{
+  text-decoration: line-through;
+}
+
 .new-note
 {
   position:relative;

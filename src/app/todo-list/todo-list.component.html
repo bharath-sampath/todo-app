@@ -9,11 +9,11 @@
   </form>
   <table class="note-items-list">
     <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
-      <tr *ngFor="let note of notes" cdkDrag cdkDragLockAxis="y">
-        <td class="note-action"><input type="checkbox"></td>
-        <td class="note">{{note}}</td>
+      <tr *ngFor="let note of notes; index as i" cdkDrag cdkDragLockAxis="y">
+        <td class="note-action"><input type="checkbox" (change)="onComplete($event,i)"></td>
+        <td class="note" [ngClass]="{'complete-note':note.noteComplete}">{{note.note}}</td>
         <td class="note-del">
-           <button class=note-del-btn (click)="onDelete(note)"></button>
+           <button class=note-del-btn (click)="onDelete(i)"></button>
         </td>
       </tr>
     </tbody>
